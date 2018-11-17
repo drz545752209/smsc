@@ -14,7 +14,7 @@ import com.hlju.mall.service.UserService;
 @Controller
 public class AuthController {
 	
-	@Autowired
+	@Autowired 
 	UserService userService;
 
 	@RequestMapping(method = RequestMethod.POST, value = { "/register", "/register.html" })
