@@ -2,6 +2,7 @@ package com.hlju.mall.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,9 +51,30 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> selectByExample(UserExample example) {
+	public List<User> selectByExample(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		UserExample uExample=new UserExample();
+		UserExample.Criteria criteria =uExample.createCriteria();
+		if(StringUtils.isNotBlank(user.getUsername())) {
+			criteria.andUsernameEqualTo(user.getUsername());
+		}
+		if(StringUtils.isNotBlank(user.getPassword())) {
+			String password=Encryption.str2MD5(user.getPassword());
+			user.setPassword(password);
+			criteria.andPasswordEqualTo(user.getPassword());
+		}
+		return userMapper.selectByExample(uExample);
+	}
+	
+	@Override
+	public boolean hasPassword(User user) {
+		// TODO Auto-generated method stub
+		List<User> users=selectByExample(user);
+		if(users.isEmpty()) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 
 	@Override
@@ -84,5 +106,7 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 
 }

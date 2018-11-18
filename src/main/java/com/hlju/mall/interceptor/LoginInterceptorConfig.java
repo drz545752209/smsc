@@ -24,7 +24,7 @@ public class LoginInterceptorConfig implements ApplicationContextAware,WebMvcCon
 	}
 	
 	public void addInterceptors(InterceptorRegistry registry) {
-		String [] excludeStr= {"/login", "/login.html", "/register", "/register.html"
+		String [] excludeStr= {"/login", "/login.html", "/register", "/register.html","/user/login"
 				,"/css/login.css","/css/header.css","/js/jquery.min.js","/img/*.gif","/img/*.jpg"
 				};
 		registry.addInterceptor(userLoginInterceptor)
