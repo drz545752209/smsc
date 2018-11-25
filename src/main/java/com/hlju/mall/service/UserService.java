@@ -19,11 +19,15 @@ public interface UserService {
     int insertSelective(User record);
 
     boolean hasPassword(User user);
+    
+    boolean hasUserName(User user);
 
     User selectByPrimaryKey(Long id);
     
     List<User> selectByExample(User user);
-
+    
+    List<User> selectUserNameByExamle(User record);
+    
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
     int updateByExample(@Param("record") User record, @Param("example") UserExample example);

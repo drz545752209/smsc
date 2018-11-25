@@ -24,16 +24,22 @@ public class AuthController {
 
 		String verificationCode = (String) httpServletRequest.getSession().getAttribute("verificationCode");
 		String clientVCode = httpServletRequest.getParameter("verificationCode");
+		Boolean hasUserName = userService.hasUserName(user);
 
-		if (verificationCode.equals(clientVCode)) {
-			// 验证成功
-			userService.insertSelective(user);
-			mav.setViewName("/login");
-		} else {
+		if (!verificationCode.equals(clientVCode)) {
 			// 失败
 			mav.addObject("msg", "验证码错误");
 			mav.setViewName("register");
+		} else if (hasUserName) {
+			// 失败
+			mav.addObject("msg", "用户名已存在");
+			mav.setViewName("register");
+		} else {
+			// 验证成功
+			userService.insertSelective(user);
+			mav.setViewName("/login");
 		}
+
 		return mav;
 	}
 
@@ -41,22 +47,21 @@ public class AuthController {
 	public String login() throws Exception {
 		return "login";
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = { "/index", "/index.html" })
 	public String toIndex() throws Exception {
 		return "index";
 	}
-	
 
-	@RequestMapping(method=RequestMethod.POST,value= {"/user/login"})
-	public ModelAndView loginValidate(User user,HttpServletRequest res) {
-		boolean isValidate=userService.hasPassword(user);
-		ModelAndView mav=new ModelAndView();
-		if(isValidate) {
-			HttpSession session= res.getSession();
+	@RequestMapping(method = RequestMethod.POST, value = { "/user/login" })
+	public ModelAndView loginValidate(User user, HttpServletRequest res) {
+		boolean isValidate = userService.hasPassword(user);
+		ModelAndView mav = new ModelAndView();
+		if (isValidate) {
+			HttpSession session = res.getSession();
 			session.setAttribute("loginName", user.getUsername());
 			mav.setViewName("redirect:/index");
-		}else {
+		} else {
 			mav.setViewName("/login");
 		}
 		return mav;

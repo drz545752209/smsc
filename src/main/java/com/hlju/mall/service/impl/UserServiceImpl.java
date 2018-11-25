@@ -14,7 +14,7 @@ import com.hlju.mall.service.UserService;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	UserMapper userMapper;
 
@@ -44,37 +44,55 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int insertSelective(User record) {
-		// TODO Auto-generated method stub
-		String password=record.getPassword();
+		String password = record.getPassword();
 		record.setPassword(Encryption.str2MD5(password));
 		return userMapper.insertSelective(record);
 	}
 
 	@Override
-	public List<User> selectByExample(User user) {
-		// TODO Auto-generated method stub
-		UserExample uExample=new UserExample();
-		UserExample.Criteria criteria =uExample.createCriteria();
-		if(StringUtils.isNotBlank(user.getUsername())) {
-			criteria.andUsernameEqualTo(user.getUsername());
-		}
-		if(StringUtils.isNotBlank(user.getPassword())) {
-			String password=Encryption.str2MD5(user.getPassword());
-			user.setPassword(password);
-			criteria.andPasswordEqualTo(user.getPassword());
-		}
-		return userMapper.selectByExample(uExample);
-	}
-	
-	@Override
 	public boolean hasPassword(User user) {
-		// TODO Auto-generated method stub
-		List<User> users=selectByExample(user);
-		if(users.isEmpty()) {
+		List<User> users = selectByExample(user);
+		if (users.isEmpty()) {
 			return false;
-		}else {
+		} else {
 			return true;
 		}
+	}
+
+	@Override
+	public List<User> selectByExample(User user) {
+		UserExample uExample = new UserExample();
+		UserExample.Criteria criteria = uExample.createCriteria();
+		if (StringUtils.isNotBlank(user.getUsername())) {
+			criteria.andUsernameEqualTo(user.getUsername());
+			if (StringUtils.isNotBlank(user.getPassword())) {
+				String password = Encryption.str2MD5(user.getPassword());
+				criteria.andPasswordEqualTo(password);
+				return userMapper.selectByExample(uExample);
+			}
+		}
+		return null;
+	}
+
+	public boolean hasUserName(User user) {
+		List<User> users = selectUserNameByExamle(user);
+		if (users.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	@Override
+	public List<User> selectUserNameByExamle(User record) {
+		UserExample uExample = new UserExample();
+		UserExample.Criteria criteria = uExample.createCriteria();
+		String userName = StringUtils.isNotEmpty(record.getUsername()) ? null : record.getUsername();
+		if (!userName.isEmpty()) {
+			criteria.andUsernameEqualTo(userName);
+			return userMapper.selectByExample(uExample);
+		}
+		return null;
 	}
 
 	@Override
@@ -106,7 +124,5 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
 
 }
