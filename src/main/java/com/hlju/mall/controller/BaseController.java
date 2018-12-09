@@ -54,17 +54,9 @@ public class BaseController {
 
 
 
-    //跳转登录页
-    @RequestMapping(value = {"/login","login.html"})
-    public String login(){
-        return "login";
-    }
 
-    //跳转注册页
-    @RequestMapping(value = {"/register","register.html"})
-    public String register(){
-        return "register";
-    }
+
+
 
     //跳转购物车
     @RequestMapping("/shopcar.html")

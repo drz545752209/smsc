@@ -17,6 +17,12 @@ public class AuthController {
 
 	@Autowired
 	UserService userService;
+	
+    //跳转注册页
+    @RequestMapping(method = RequestMethod.GET,value = {"/register","register.html"})
+    public String register(){
+        return "register";
+    }
 
 	@RequestMapping(method = RequestMethod.POST, value = { "/register", "/register.html" })
 	public ModelAndView register(User user, HttpServletRequest httpServletRequest) {
@@ -48,10 +54,7 @@ public class AuthController {
 		return "login";
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = { "/index", "/index.html" })
-	public String toIndex() throws Exception {
-		return "index";
-	}
+
 
 	@RequestMapping(method = RequestMethod.POST, value = { "/user/login" })
 	public ModelAndView loginValidate(User user, HttpServletRequest res) {
