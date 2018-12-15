@@ -9,4 +9,5 @@ public class DigitalMallApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DigitalMallApplication.class, args);
 	}
+	
 }

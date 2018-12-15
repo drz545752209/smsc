@@ -16,6 +16,7 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script
 	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -35,24 +36,22 @@
 			<div class="list-group">
 				<p class="list-group-item active"
 					style="margin-top: 55px; height: 55px;">物品分类</p>
-				<a href="/index/1" class="list-group-item">护肤</a> <a href="/index/2"
-					class="list-group-item">彩妆</a> <a href="/index/3"
-					class="list-group-item">香氛</a> <a href="/index/4"
-					class="list-group-item">身体护理</a> <a href="/index/5"
-					class="list-group-item">礼盒套装</a> <a href="/index/6"
-					class="list-group-item">母婴专区</a> <a href="/index/7"
-					class="list-group-item">男士专区</a> <a href="/index/8"
-					class="list-group-item">粉底</a> <a href="/index/1"
-					class="list-group-item">睫毛膏</a> <a href="/index/2"
-					class="list-group-item">唇彩</a> <a href="/index/3"
-					class="list-group-item">衣服</a> <a href="/index/4"
-					class="list-group-item">食品保健</a> <a href="/index/5"
-					class="list-group-item">瘦身</a> <a href="/index/6"
-					class="list-group-item">美容</a> <a href="/index/7"
-					class="list-group-item">情人节专场</a> <a href="/index/8"
-					class="list-group-item">开学庆典</a> <a href="/index/1"
-					class="list-group-item">儿童玩具</a> <a href="/index/1"
-					class="list-group-item">家用电器</a>
+				<a href="/index/1" class="list-group-item">数码相机</a> <a href="/index/2"
+					class="list-group-item">平板电脑</a> <a href="/index/3"
+					class="list-group-item">笔记本电脑</a> <a href="/index/4"
+					class="list-group-item">智能手表</a> <a href="/index/5"
+					class="list-group-item">智能冰箱</a> <a href="/index/6"
+					class="list-group-item">智能空调</a> <a href="/index/7"
+					class="list-group-item">智能电视</a> <a href="/index/8"
+					class="list-group-item">鼠标</a> <a href="/index/1"
+					class="list-group-item">显示器</a> <a href="/index/2"
+					class="list-group-item">键盘</a> <a href="/index/3"
+					class="list-group-item">主机</a> <a href="/index/4"
+					class="list-group-item">显卡</a> <a href="/index/5"
+					class="list-group-item">主板</a> <a href="/index/6"
+					class="list-group-item">游戏机</a> <a href="/index/7"
+					class="list-group-item">智能音箱</a> <a href="/index/8"
+					class="list-group-item"></a>
 			</div>
 		</div>
 
@@ -95,13 +94,13 @@
 							<dl class="item-des">
 								<dt>
 									<a th:href="@{/shopdetail(id)}+'='+${shopInfo.id}"
-										th:title="${shopInfo.spInfo}" target="_self"> <img
-										class="dd_img" th:src="'/item_images/' + ${shopInfo.spImg}"
+										th:title="${shopInfo.details}" target="_self"> <img
+										class="dd_img" th:src="'/item_images/' + ${shopInfo.imgUrl}"
 										width="132" height="96" /></a>
 								</dt>
 
 								<dd style="width: 150px; padding-right: 18px;">
-									<s>￥:[[${product.oldPrice}]]</s> <strong>￥:[[${product.newPrice}]]</strong>
+									<s>￥:[[${shopInfo.oldPrice}]]</s> <strong>￥:[[${shopInfo.newPrice}]]</strong>
 								</dd>
 
 								<dd>
@@ -109,7 +108,7 @@
 										<a th:href="@{/shopdetail(id)}+'='+${shopInfo.id}"
 											th:title="${shopInfo.spName}" target="_self"
 											style="width: 150px; height: 36px; margin: 5px;">
-											[[${shopInfo.spName}]]</a>
+											[[${shopInfo.name}]]</a>
 									</h2>
 								</dd>
 							</dl>

@@ -22,8 +22,18 @@ public class Product {
     private Byte isDel;
 
     private String imgUrl;
+    
+    private String details;
 
-    public Integer getId() {
+    public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
+	public Integer getId() {
         return id;
     }
 
