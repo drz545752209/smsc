@@ -793,6 +793,76 @@ public class ProductExample {
             addCriterion("img_url not between", value1, value2, "imgUrl");
             return (Criteria) this;
         }
+
+        public Criteria andDetailsIsNull() {
+            addCriterion("details is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsIsNotNull() {
+            addCriterion("details is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsEqualTo(String value) {
+            addCriterion("details =", value, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsNotEqualTo(String value) {
+            addCriterion("details <>", value, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsGreaterThan(String value) {
+            addCriterion("details >", value, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsGreaterThanOrEqualTo(String value) {
+            addCriterion("details >=", value, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsLessThan(String value) {
+            addCriterion("details <", value, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsLessThanOrEqualTo(String value) {
+            addCriterion("details <=", value, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsLike(String value) {
+            addCriterion("details like", value, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsNotLike(String value) {
+            addCriterion("details not like", value, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsIn(List<String> values) {
+            addCriterion("details in", values, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsNotIn(List<String> values) {
+            addCriterion("details not in", values, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsBetween(String value1, String value2) {
+            addCriterion("details between", value1, value2, "details");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailsNotBetween(String value1, String value2) {
+            addCriterion("details not between", value1, value2, "details");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

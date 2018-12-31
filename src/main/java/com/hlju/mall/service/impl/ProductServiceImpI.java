@@ -23,7 +23,7 @@ public class ProductServiceImpI implements ProductService {
 	@Override
 	public  PageInfo<Product> selectByType(String typeName) {
 		 ProductExample productExample=new ProductExample();
-		 if("".equals(typeName)||typeName==null) {
+		 if(!"".equals(typeName)&&typeName!=null) {
 			 Criteria criteria = productExample.createCriteria();
 			 criteria.andTypeNameEqualTo(typeName);
 		 }

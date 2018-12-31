@@ -101,9 +101,9 @@ function search(){
 					<p th:unless="${productType!=null}" class="list-group-item active"
 						style="background-color: orange; margin-top: 1px; height: 55px; font-size: 30px; line-height: 35px;">
 						热门推荐</p>
-					<select>
-					   <option th:each="productType:${productTypeList}" th:text=${productType.name}></option>
-					</select>
+					<p th:if="${productType!=null}" class="list-group-item active"
+						style="background-color: orange; margin-top: 1px; height: 55px; font-size: 30px; line-height: 35px;">
+						[[${productType.name}]]</p>
 				</div>
 				<div class="sales-queue" id="tabs-1"
 					style="background-color: white; margin-top: -25px;">

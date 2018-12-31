@@ -58,7 +58,7 @@
             tableName：必须参数，指定数据库中指定生成的对应mapper的表名
             domainObjectName：表对应的javaBean类名
         -->
-        <table tableName="product" domainObjectName="Product"/>
+        <table tableName="product_typed" domainObjectName="ProductTyped"/>
        <!--
         <table tableName="sp_car" domainObjectName="Sp_Car"/>
         <table tableName="sp_info" domainObjectName="Sp_Info"/>

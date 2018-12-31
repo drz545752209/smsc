@@ -22,18 +22,10 @@ public class Product {
     private Byte isDel;
 
     private String imgUrl;
-    
+
     private String details;
 
-    public String getDetails() {
-		return details;
-	}
-
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
-	public Integer getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -119,5 +111,13 @@ public class Product {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl == null ? null : imgUrl.trim();
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details == null ? null : details.trim();
     }
 }
